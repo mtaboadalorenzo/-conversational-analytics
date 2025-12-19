@@ -1,4 +1,4 @@
-pythonimport streamlit as st
+import streamlit as st
 from openai import OpenAI
 import pandas as pd
 
@@ -53,3 +53,4 @@ Responde de forma concisa basándote en los datos."""
     )
 
     st.write(response.choices[0].message.content)
+
