@@ -1,0 +1,13 @@
+producto;region;ventas;mes
+Laptop;Norte;150;Enero
+Laptop;Sur;200;Enero
+Laptop;Norte;180;Febrero
+Laptop;Sur;220;Febrero
+Monitor;Norte;80;Enero
+Monitor;Sur;120;Enero
+Monitor;Norte;90;Febrero
+Monitor;Sur;110;Febrero
+Teclado;Norte;300;Enero
+Teclado;Sur;250;Enero
+Teclado;Norte;320;Febrero
+Teclado;Sur;280;Febrero
