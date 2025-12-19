@@ -1,10 +1,29 @@
-import streamlit as st
+pythonimport streamlit as st
 from openai import OpenAI
 import pandas as pd
 
-st.title("Análisis de datos con IA")
+def check_password():
+    def password_entered():
+        if st.session_state["password"] == st.secrets["APP_PASSWORD"]:
+            st.session_state["authenticated"] = True
+        else:
+            st.session_state["authenticated"] = False
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    if "authenticated" not in st.session_state:
+        st.text_input("Contraseña:", type="password", on_change=password_entered, key="password")
+        return False
+    
+    if not st.session_state["authenticated"]:
+        st.text_input("Contraseña:", type="password", on_change=password_entered, key="password")
+        st.error("Contraseña incorrecta")
+        return False
+    
+    return True
+
+if check_password():
+    st.title("Análisis de datos con IA")
+
+    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # Cargar datos
 df = pd.read_csv("datosprueba.csv", sep=";")
@@ -32,4 +51,5 @@ Responde de forma concisa basándote en los datos."""
             {"role": "user", "content": prompt}
         ]
     )
+
     st.write(response.choices[0].message.content)
